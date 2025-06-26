@@ -2,21 +2,23 @@ import discord
 import asyncio
 from dotenv import load_dotenv
 import os
+from discord.ext import commands
 
 load_dotenv()
 
 intents = discord.Intents.default()
-bot = discord.Client(intents=intents)
+bot = commands.Bot(command_prefix="!", intents=intents)
 
 
 async def load_cogs():
     for filename in os.listdir("app/commands"):
         if filename.endswith(".py"):
-            extension = f"cogs.{filename[:-3]}"
+            extension = f"commands.{filename[:-3]}"
             try:
                 await bot.load_extension(extension)
+                print(f"[ {filename[:-3]} ]: ✔")
             except Exception as e:
-                print(e)
+                print(f"[ {filename[:-3]} ]: ✖ - {e}")
 
 
 async def start_all():
