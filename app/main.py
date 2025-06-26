@@ -21,9 +21,20 @@ async def load_commands():
                 print(f"[ {filename[:-3]} ]: ✖ - {e}")
 
 
+async def load_events():
+    for filename in os.listdir("app/events"):
+        if filename.endswith(".py"):
+            extension = f"events.{filename[:-3]}"
+            try:
+                await bot.load_extension(extension)
+                print(f"[ {filename[:-3]} ]: ✔")
+            except Exception as e:
+                print(f"[ {filename[:-3]} ]: ✖ - {e}")
+
+
 async def start_all():
     await load_commands()
-    await bot.tree.sync()
+    await load_events()
     await bot.start(os.getenv("BOT_TOKEN"))
 
 # --- Entry point ---
