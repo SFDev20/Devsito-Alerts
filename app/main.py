@@ -10,7 +10,7 @@ intents = discord.Intents.default()
 bot = commands.Bot(command_prefix="!", intents=intents)
 
 
-async def load_cogs():
+async def load_commands():
     for filename in os.listdir("app/commands"):
         if filename.endswith(".py"):
             extension = f"commands.{filename[:-3]}"
@@ -22,7 +22,8 @@ async def load_cogs():
 
 
 async def start_all():
-    await load_cogs()
+    await load_commands()
+    await bot.tree.sync()
     await bot.start(os.getenv("BOT_TOKEN"))
 
 # --- Entry point ---
