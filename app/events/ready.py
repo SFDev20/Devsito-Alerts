@@ -11,6 +11,7 @@ class Ready(commands.Cog):
         if not self.synced:
             await self.bot.tree.sync()
             self.synced = True
+        self.bot.scheduler.start()
         print(f"Bot ready as {self.bot.user}")
 
 
