@@ -18,9 +18,9 @@ async def load_commands():
             extension = f"commands.{filename[:-3]}"
             try:
                 await bot.load_extension(extension)
-                print(f"[ {filename[:-3]} ]: ✔")
+                print(f"[ Command ] {filename[:-3]}: ✔")
             except Exception as e:
-                print(f"[ {filename[:-3]} ]: ✖ - {e}")
+                print(f"[ Command ] {filename[:-3]}: ✖ - {e}")
 
 
 async def load_events():
@@ -29,9 +29,9 @@ async def load_events():
             extension = f"events.{filename[:-3]}"
             try:
                 await bot.load_extension(extension)
-                print(f"[ {filename[:-3]} ]: ✔")
+                print(f"[ Event ] {filename[:-3]}: ✔")
             except Exception as e:
-                print(f"[ {filename[:-3]} ]: ✖ - {e}")
+                print(f"[ Event ] {filename[:-3]}: ✖ - {e}")
 
 
 async def load_tasks():
@@ -40,9 +40,9 @@ async def load_tasks():
             extension = f"tasks.{filename[:-3]}"
             try:
                 await bot.load_extension(extension)
-                print(f"[ {filename[:-3]} ]: ✔")
+                print(f"[ Task ] {filename[:-3]}: ✔")
             except Exception as e:
-                print(f"[ {filename[:-3]} ]: ✖ - {e}")
+                print(f"[ Task ] {filename[:-3]}: ✖ - {e}")
 
 
 async def start_all():
