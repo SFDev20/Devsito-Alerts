@@ -36,7 +36,7 @@ class CountdownBanner(commands.Cog):
     async def getMs(self):
         async with httpx.AsyncClient() as client:
             response = await client.get(
-                f"{os.getenv("GTA6_API")}?timezone=America/Lima"
+                f"{os.getenv('GTA6_API')}?timezone=America/Lima"
             )
             data = response.json()
             return data["miliseconds_left"]
